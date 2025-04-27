@@ -13,7 +13,7 @@ setup(
     py_modules=["Actividad1", "Actividad2", "Actividad3", "Actividad4"],
     install_requires=[
         "pandas",
-        "opnpyxl",
+        "openpyxl",
         "requests",
         "beautifulsoup4"
     ]
