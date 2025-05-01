@@ -57,6 +57,8 @@ class Dataweb:
             df = self.convertir_numericos(df)  # Convert numeric columns to float
 
             df.to_excel('dataweb_limpio.xlsx')
+            return df  # Return the DataFrame
+        
 
         except Exception as err:
             # Print the error message
