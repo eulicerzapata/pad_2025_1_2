@@ -54,11 +54,11 @@ class Dataweb:
             })  # Create a DataFrame from the rows and column names
             # Save the DataFrame to an Excel file
 
-            df = self.convertir_numericos(df)  # Convert numeric columns to float
+            # Convert numeric columns to float
+            df = self.convertir_numericos(df)
 
             df.to_excel('dataweb_limpio.xlsx')
             return df  # Return the DataFrame
-        
 
         except Exception as err:
             # Print the error message
@@ -67,19 +67,17 @@ class Dataweb:
             print(err)
             # Print the error message
 
-    def convertir_numericos(self,df=pd.DataFrame()):
-         df = df.copy()  # Create a copy of the DataFrame to avoid modifying the original one
-         if len(df) > 0:
-             for col in ('abrir', 'maximo', 'minimo',	'cerrar', 'cierre ajustado', 'volumen'):
-               df[col] = (
-                   df[col].str.replace(r'["\.", "" ]', '', regex=True)
-                   # Remove non-numeric characters
-                   .str.replace(r'[",", "." ]', '', regex=True)
-                   .astype(float)  # Convert to float
-                   )
-             return df  # Return the modified DataFrame
-           
-                           
-         
-         
+    def convertir_numericos(self, df=pd.DataFrame()):
+        df = df.copy()  # Create a copy of the DataFrame to avoid modifying the original one
+        if len(df) > 0:
+            for col in ('abrir', 'maximo', 'minimo',	'cerrar', 'cierre ajustado', 'volumen'):
+                df[col] = (
+                    df[col].str.replace(r'["\.", "" ]', '', regex=True)
+                    # Remove non-numeric characters
+                    .str.replace(r'[",", "." ]', '', regex=True)
+                    .astype(float)  # Convert to float
+                )
+            return df  # Return the modified DataFrame
+
+
 # if __name__ == "__main__":
